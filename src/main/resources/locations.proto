@@ -1,0 +1,39 @@
+syntax = "proto3";
+option java_package = "org.deepak.grpc.protoFiles";
+
+service locations{
+	rpc getLocation(locationId) returns (APIResponse);
+	
+	rpc addLocation(location) returns (APIResponse);
+	
+	rpc updateLocation(locationUpdate) returns (APIResponse);
+	
+	rpc deleteLocation(locationId) returns (APIResponse);
+}
+
+message locationId{
+	int32 id = 1;
+}
+
+message location{
+	string locationName = 1;
+	int32 locationLongitude = 2;
+	int32 locationLatitude = 3;
+	int32 locationActive = 4;
+}
+
+message locationUpdate{
+	int32 locationId = 1;
+	string locationName = 2;
+	int32 locationLongitude = 3;
+	int32 locationLatitude = 4;
+	int32 locationActive = 5;
+}
+
+message APIResponse{
+	string responseMessage = 1;
+	int32 messageCode = 2;
+}
+
+
+
